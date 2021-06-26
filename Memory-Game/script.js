@@ -1,7 +1,10 @@
 const gameContainer = document.getElementById("game");
 
+// For the first card
 let card1 = null;
+// for the second card
 let card2 = null;
+// to count the numbber of click event
 let clickCards = 0;
 
 const COLORS = [
@@ -65,22 +68,26 @@ function createDivsForColors(colorArray) {
 
     function handleCardClick(event) {
   // you can use event.target to see which element was clicked
-  console.log("you just clicked", event.target);
+  // Get the color from the crad
   let color = event.target.classList[0];
-    card1 = card2;
+    // storing the target element
+    card1 = card2; 
     card2 = event.target;
   
+    
     clickCards++
     card2.style = `background-color : ${color}`
     
+    // If the user have selected 2 crades then clickCards will be 2
     if(clickCards == 2){
      
-      clickCards = 0;
-       if(card1.classList[0] !== card2.classList[0]){
+      clickCards = 0; // reseting the count
+       if(card1.classList[0] !== card2.classList[0]){ // if the color of both the selected card are diff 
+        // flip them
         clrArray.push(setTimeout(function(){
         card1.style = `background-color :transparent`
         card2.style = `background-color :transparent`
-        },500));
+        },1000));
         
        }
   }
